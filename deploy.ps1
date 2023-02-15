@@ -1,4 +1,6 @@
-Connect-AzAccount
+Connect-AzAccount -Tenant
+
+Get-AzContext
 
 #get object Id of the current user (that is used above)
 $user = Get-AzADUser -UserPrincipalName (Get-AzContext).Account
@@ -40,7 +42,7 @@ $inputObject = @{
     TemplateFile          = "infra-as-code/bicep/modules/policy/definitions/customPolicyDefinitions.bicep"
     TemplateParameterFile = 'infra-as-code/bicep/modules/policy/definitions/parameters/customPolicyDefinitions.parameters.all.json'
   }
-  
+
 New-AzManagementGroupDeployment @inputObject
 
 
@@ -60,7 +62,7 @@ $inputObject = @{
     TemplateFile          = "infra-as-code/bicep/modules/customRoleDefinitions/customRoleDefinitions.bicep"
     TemplateParameterFile = 'infra-as-code/bicep/modules/customRoleDefinitions/parameters/customRoleDefinitions.parameters.all.json'
   }
-  
+
 New-AzManagementGroupDeployment @inputObject
 
 
@@ -141,7 +143,7 @@ $inputObject = @{
     TemplateFile          = "infra-as-code/bicep/orchestration/subPlacementAll/subPlacementAll.bicep"
     TemplateParameterFile = 'infra-as-code/bicep/orchestration/subPlacementAll/parameters/subPlacementAll.parameters.all.json'
   }
-  
+
   New-AzManagementGroupDeployment @inputObject
 
 
@@ -160,7 +162,7 @@ $inputObject = @{
     TemplateFile          = "infra-as-code/bicep/modules/policy/assignments/alzDefaults/alzDefaultPolicyAssignments.bicep"
     TemplateParameterFile = 'infra-as-code/bicep/modules/policy/assignments/alzDefaults/parameters/alzDefaultPolicyAssignments.parameters.all.json'
   }
-  
+
 New-AzManagementGroupDeployment @inputObject
 
 
@@ -170,7 +172,7 @@ New-AzManagementGroupDeployment @inputObject
 
 
 
-#### Custom policy assignment for allowed locations (regions) #### 
+#### Custom policy assignment for allowed locations (regions) ####
 
 
 
